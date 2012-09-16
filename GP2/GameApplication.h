@@ -21,7 +21,7 @@ private:
 
 private:
 	ID3D10Device * m_pD3D10Device;
-	IDXGISwapChain * m_pSwanChain;
-	ID3D10RenderTargetView * mpRenderTargetView;
-	CWin32Window * mpWindow;
+	IDXGISwapChain * m_pSwapChain;
+	ID3D10RenderTargetView * m_pRenderTargetView;
+	CWin32Window * m_pWindow;
 };
