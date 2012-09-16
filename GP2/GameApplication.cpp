@@ -28,3 +28,51 @@ CGameApplication::~CGameApplication(void)
 		m_pWindow=NULL;
 	}
 }
+
+bool CGameApplication::init()
+{
+	if (!initWindow())
+		return false;
+
+	if (!initGraphics())
+		return false;
+	 
+	return true;
+}
+
+void CGameApplication::run()
+{
+	while(m_pWindow->running())
+	{
+		if(!m_pWindow->checkForWindowMessages())
+		{
+			update();
+			render();
+		}	
+	}
+}
+
+void CGameApplication::render()
+{
+
+}
+
+void CGameApplication::update()
+{
+
+}
+
+bool CGameApplication::initGraphics()
+{
+	return true;
+}
+
+bool CGameApplication::initWindow()
+{
+	m_pWindow=new CWin32Window();
+	if(!m_pWindow->init(TEXT("lAB 1 - Create Device"),800,640,false))
+		return false;
+
+	return true;
+}
+

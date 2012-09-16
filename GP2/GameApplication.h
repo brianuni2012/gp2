@@ -1,7 +1,7 @@
 #pragma once
 #include "Win32Window.h"
-#include <d3d10.h>
-#include <D3DX10.H>
+#include <D3D10.h>
+#include <D3DX10.h>
 
 class CGameApplication
 {
