@@ -16,9 +16,6 @@
     <Filter Include="Window">
       <UniqueIdentifier>{ec1bf3a5-8d61-41da-8ef5-06fc869dffcd}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Effects">
-      <UniqueIdentifier>{998ee03c-6852-401d-8b43-e436a7417463}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -32,13 +29,5 @@
     <ClInclude Include="Win32Window.h">
       <Filter>Window</Filter>
     </ClInclude>
-    <ClInclude Include="GameApplication.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="ScreenSpace.fx">
-      <Filter>Effects</Filter>
-    </None>
   </ItemGroup>
 </Project>
