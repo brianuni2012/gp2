@@ -64,15 +64,16 @@ bool CGameApplication::initGame()
 	#if defined( DEBUG ) || defined( _DEBUG )
 	dwShaderFlags |= D3D10_SHADER_DEBUG;
 	#endif
+	ID3D10Blob* pErrors = NULL;
+
 
 	if( FAILED(D3DX10CreateEffectFromFile( TEXT("ScreenSpace.fx"),
 		NULL, NULL, "fx_4_0", dwShaderFlags, 0, m_pD3D10Device, NULL, NULL, &m_pEffect,
-		NULL, NULL )))
+		&pErrors, NULL )))
 
 	{
-		MessageBox( NULL, TEXT("The fx file cannot be located. Please run this executabke from the directory that contains the FX file."),
-			TEXT("Error"),
-			MB_OK);
+		MessageBoxA( NULL,(char*)pErrors->GetBufferPointer(),
+			"error",MB_OK);
 		return false;
 	
 	}
@@ -86,11 +87,12 @@ bool CGameApplication::initGame()
 	bd.CPUAccessFlags = 0;
 	bd.MiscFlags = 0;
 
+	
 	Vertex vertices[] = 
 	{
 		D3DXVECTOR3(0.0f, 0.5f, 0.5f),
-		D3DXVECTOR3(0.0f, -0.5f, 0.5f),
-		D3DXVECTOR3(-0.0f, -0.5f, 0.5f),
+		D3DXVECTOR3(0.5f, -0.5f, 0.5f),
+		D3DXVECTOR3(-0.5f, -0.5f, 0.5f),
 	};
 
 	D3D10_SUBRESOURCE_DATA InitData;
@@ -116,22 +118,20 @@ bool CGameApplication::initGame()
 		return false;
 	}
 
-	m_pD3D10Device->IASetInputLayout( m_pVertexLayout );
+	m_pD3D10Device->IASetInputLayout( m_pVertexLayout );	
+
 
 	
-
-	UINT stride = sizeof( Vertex );
-	UINT offset = 0 ;
-	m_pD3D10Device->IASetVertexBuffers( 0, 1, &m_pVertexBuffer, &stride, &offset );	
+	//m_pD3D10Device->IASetPrimitiveTopology(D3D10_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 	
-	m_pD3D10Device->IASetPrimitiveTopology(D3D10_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
-
 	if (FAILED(m_pD3D10Device->CreateBuffer( &bd, &InitData, &m_pVertexBuffer )))
 		return false;
-
 	
+	UINT stride = sizeof(Vertex);
+	UINT offset = 0;
+	m_pD3D10Device->IASetVertexBuffers( 0, 1, &m_pVertexBuffer, &stride, &offset );	
 
-	return true;
+	return true;	
 	
 }
 
@@ -150,15 +150,17 @@ void CGameApplication::run()
 void CGameApplication::render()
 {
 	float ClearColor[4] = {0.0f, 0.125f, 0.3f, 1.0f};
+
 	m_pD3D10Device->ClearRenderTargetView(m_pRenderTargetView,ClearColor);
 
+	m_pD3D10Device->IASetPrimitiveTopology(D3D10_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 
 	D3D10_TECHNIQUE_DESC techDesc;
 	m_pTechnique->GetDesc( &techDesc );
 	for(UINT p = 0; p <techDesc.Passes; ++p)
 	{
 	
-		m_pTechnique->GetPassByIndex( p )->Apply( 0 );
+		m_pTechnique->GetPassByIndex( p )->Apply(0);
 		m_pD3D10Device->Draw( 3,0 );
 	
 	}
@@ -178,8 +180,8 @@ bool CGameApplication::initGraphics()
 
 	UINT width=windowRect.right-windowRect.left;
 	UINT height=windowRect.bottom-windowRect.top;
-
 	UINT createDeviceFlags=0;
+
 #ifdef _DEBUG
 	createDeviceFlags|=D3D10_CREATE_DEVICE_DEBUG;
 #endif
@@ -197,13 +199,21 @@ bool CGameApplication::initGraphics()
 	sd.BufferUsage = DXGI_USAGE_RENDER_TARGET_OUTPUT;
 
 	sd.SampleDesc.Count = 1;
-	sd.SampleDesc.Quality =0 ;
+	sd.SampleDesc.Quality =0;
 
 	sd.BufferDesc.Width = width;
 	sd.BufferDesc.Height = height;
 	sd.BufferDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
 	sd.BufferDesc.RefreshRate.Numerator = 60;
 	sd.BufferDesc.RefreshRate.Denominator = 1;
+
+	if (FAILED(D3D10CreateDeviceAndSwapChain(NULL,
+		D3D10_DRIVER_TYPE_HARDWARE, NULL, createDeviceFlags,
+		D3D10_SDK_VERSION, &sd, &m_pSwapChain,
+		&m_pD3D10Device)))
+		return false;
+
+
 
 	ID3D10Texture2D * pBackBuffer;
 	if (FAILED (m_pSwapChain->GetBuffer(0,__uuidof(ID3D10Texture2D),(void**)&pBackBuffer)))
