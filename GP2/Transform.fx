@@ -30,8 +30,7 @@ float4 PS(PS_INPUT input):SV_TARGET
 
 RasterizerState DisableCulling
 {
-    CullMode = NONE;
-	//FillMode=WIREFRAME;
+    CullMode = NONE;	
 };
 
 technique10 Render
