@@ -87,6 +87,8 @@ bool CGameApplication::initGame()
 	}
 
 	m_pTechnique = m_pEffect->GetTechniqueByName("Render");
+
+	//==========Vertex Buffer=====================================================================================
 	
 	D3D10_BUFFER_DESC bd;
 	bd.Usage = D3D10_USAGE_DEFAULT;
@@ -105,6 +107,37 @@ bool CGameApplication::initGame()
 
 	D3D10_SUBRESOURCE_DATA InitData;
 	InitData.pSysMem = vertices;
+
+	if (FAILED(m_pD3D10Device->CreateBuffer( &bd, &InitData, &m_pVertexBuffer )))
+		return false;
+	
+	UINT stride = sizeof(Vertex);
+	UINT offset = 0;
+	m_pD3D10Device->IASetVertexBuffers( 0, 1, &m_pVertexBuffer, &stride, &offset );	
+
+	//=============================================================================================================
+
+
+	//==============Index Buffer===================================================================================
+
+	D3D10_BUFFER_DESC indexBufferDesc;
+	indexBufferDesc.Usage = D3D10_USAGE_DEFAULT;
+	indexBufferDesc.ByteWidth = sizeof( int ) * 3;
+	indexBufferDesc.BindFlags = D3D10_BIND_INDEX_BUFFER;
+	indexBufferDesc.CPUAccessFlags = 0;
+	indexBufferDesc.MiscFlags = 0;
+
+	int indices[]={0,1,2};
+
+	D3D10_SUBRESOURCE_DATA IndexBufferInitialData;
+	InitData.pSysMem = indices;
+
+	if (FAILED(m_pD3D10Device->CreateBuffer( &indexBufferDesc, &InitData, &m_pIndexBuffer )))
+		return false;
+
+	m_pD3D10Device->IASetIndexBuffer(m_pIndexBuffer, DXGI_FORMAT_R32_UINT, 0 );
+
+	//==============================================================================================================
 	 
 	D3D10_INPUT_ELEMENT_DESC layout[] =
 	{
@@ -148,12 +181,7 @@ bool CGameApplication::initGame()
 	m_pProjectionMatrixVariable=m_pEffect->GetVariableByName("matProjection")->AsMatrix();
 	m_pProjectionMatrixVariable->SetMatrix((float*)m_matProjection);
 	
-	if (FAILED(m_pD3D10Device->CreateBuffer( &bd, &InitData, &m_pVertexBuffer )))
-		return false;
-	
-	UINT stride = sizeof(Vertex);
-	UINT offset = 0;
-	m_pD3D10Device->IASetVertexBuffers( 0, 1, &m_pVertexBuffer, &stride, &offset );		
+		
 	
 	m_vecPosition=D3DXVECTOR3(0.0f,0.0f,0.0f);
 	m_vecScale=D3DXVECTOR3(1.0f,1.0f,1.0f);
@@ -199,7 +227,7 @@ void CGameApplication::render()
 	{
 	
 		m_pTechnique->GetPassByIndex( p )->Apply(0);
-		m_pD3D10Device->Draw( 3,0 );
+		m_pD3D10Device->DrawIndexed( 3,0,0 );
 	
 	}
 	m_pSwapChain->Present(0,0);

@@ -32,6 +32,7 @@ private:
 	CWin32Window * m_pWindow;
 
 	ID3D10Buffer * m_pVertexBuffer;
+	ID3D10Buffer * m_pIndexBuffer; 
 	ID3D10InputLayout * m_pVertexLayout;
 
 	ID3D10Effect* m_pEffect;
@@ -52,6 +53,8 @@ private:
 	D3DXVECTOR3 m_vecPosition;
 	D3DXVECTOR3 m_vecRotation;
 	D3DXVECTOR3 m_vecScale;
+
+
 
 
 };
