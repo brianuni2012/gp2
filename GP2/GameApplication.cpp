@@ -153,14 +153,14 @@ bool CGameApplication::initGame()
 	
 	UINT stride = sizeof(Vertex);
 	UINT offset = 0;
-	m_pD3D10Device->IASetVertexBuffers( 0, 1, &m_pVertexBuffer, &stride, &offset );	
-
-	return true;	
+	m_pD3D10Device->IASetVertexBuffers( 0, 1, &m_pVertexBuffer, &stride, &offset );		
 	
 	m_vecPosition=D3DXVECTOR3(0.0f,0.0f,0.0f);
 	m_vecScale=D3DXVECTOR3(1.0f,1.0f,1.0f);
 	m_vecRotation=D3DXVECTOR3(0.0f,0.0f,0.0f);
 	m_pWorldMatrixVariable=m_pEffect->GetVariableByName("matWorld")->AsMatrix();
+
+	return true;
 }
 
 void CGameApplication::run()
