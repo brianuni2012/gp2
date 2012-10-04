@@ -172,7 +172,7 @@ void CGameApplication::run()
 			update();
 			render();
 		}	
-	}
+	} 
 }
 
 void CGameApplication::render()
