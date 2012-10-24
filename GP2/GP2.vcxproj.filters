@@ -16,8 +16,11 @@
     <Filter Include="Window">
       <UniqueIdentifier>{ec1bf3a5-8d61-41da-8ef5-06fc869dffcd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game">
+      <UniqueIdentifier>{6372bba7-c9e3-46e8-8d5f-15bd5c6c2f57}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Effects">
-      <UniqueIdentifier>{faccaa63-27c4-4d01-892d-331aaa43dede}</UniqueIdentifier>
+      <UniqueIdentifier>{e7e0afe1-4082-46ca-bf80-1af47b3ae17f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -28,6 +31,42 @@
       <Filter>Window</Filter>
     </ClCompile>
     <ClCompile Include="GameApplication.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\---UNI---\---SEMESTER1---\---GAMES_PROGRAMMING2---\---LABS---\Lab6\CPPS,HEADERS\CameraComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\---UNI---\---SEMESTER1---\---GAMES_PROGRAMMING2---\---LABS---\Lab6\CPPS,HEADERS\GameApplication.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\---UNI---\---SEMESTER1---\---GAMES_PROGRAMMING2---\---LABS---\Lab6\CPPS,HEADERS\GameObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\---UNI---\---SEMESTER1---\---GAMES_PROGRAMMING2---\---LABS---\Lab6\CPPS,HEADERS\GameObjectManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\---UNI---\---SEMESTER1---\---GAMES_PROGRAMMING2---\---LABS---\Lab6\CPPS,HEADERS\GeometryComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\---UNI---\---SEMESTER1---\---GAMES_PROGRAMMING2---\---LABS---\Lab6\CPPS,HEADERS\Input.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\---UNI---\---SEMESTER1---\---GAMES_PROGRAMMING2---\---LABS---\Lab6\CPPS,HEADERS\Joypad.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\---UNI---\---SEMESTER1---\---GAMES_PROGRAMMING2---\---LABS---\Lab6\CPPS,HEADERS\Keyboard.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\---UNI---\---SEMESTER1---\---GAMES_PROGRAMMING2---\---LABS---\Lab6\CPPS,HEADERS\MaterialComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\---UNI---\---SEMESTER1---\---GAMES_PROGRAMMING2---\---LABS---\Lab6\CPPS,HEADERS\ModelLoader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\---UNI---\---SEMESTER1---\---GAMES_PROGRAMMING2---\---LABS---\Lab6\CPPS,HEADERS\Mouse.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\---UNI---\---SEMESTER1---\---GAMES_PROGRAMMING2---\---LABS---\Lab6\CPPS,HEADERS\Timer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -36,6 +75,63 @@
       <Filter>Window</Filter>
     </ClInclude>
     <ClInclude Include="GameApplication.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\---UNI---\---SEMESTER1---\---GAMES_PROGRAMMING2---\---LABS---\Lab6\CPPS,HEADERS\CameraComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\---UNI---\---SEMESTER1---\---GAMES_PROGRAMMING2---\---LABS---\Lab6\CPPS,HEADERS\DefaultEffect.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\---UNI---\---SEMESTER1---\---GAMES_PROGRAMMING2---\---LABS---\Lab6\CPPS,HEADERS\GameApplication.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\---UNI---\---SEMESTER1---\---GAMES_PROGRAMMING2---\---LABS---\Lab6\CPPS,HEADERS\GameObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\---UNI---\---SEMESTER1---\---GAMES_PROGRAMMING2---\---LABS---\Lab6\CPPS,HEADERS\GameObjectManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\---UNI---\---SEMESTER1---\---GAMES_PROGRAMMING2---\---LABS---\Lab6\CPPS,HEADERS\GeometryComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\---UNI---\---SEMESTER1---\---GAMES_PROGRAMMING2---\---LABS---\Lab6\CPPS,HEADERS\IComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\---UNI---\---SEMESTER1---\---GAMES_PROGRAMMING2---\---LABS---\Lab6\CPPS,HEADERS\Input.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\---UNI---\---SEMESTER1---\---GAMES_PROGRAMMING2---\---LABS---\Lab6\CPPS,HEADERS\Joypad.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\---UNI---\---SEMESTER1---\---GAMES_PROGRAMMING2---\---LABS---\Lab6\CPPS,HEADERS\Keyboard.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\---UNI---\---SEMESTER1---\---GAMES_PROGRAMMING2---\---LABS---\Lab6\CPPS,HEADERS\MaterialComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\---UNI---\---SEMESTER1---\---GAMES_PROGRAMMING2---\---LABS---\Lab6\CPPS,HEADERS\ModelLoader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\---UNI---\---SEMESTER1---\---GAMES_PROGRAMMING2---\---LABS---\Lab6\CPPS,HEADERS\Mouse.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\---UNI---\---SEMESTER1---\---GAMES_PROGRAMMING2---\---LABS---\Lab6\CPPS,HEADERS\Timer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\---UNI---\---SEMESTER1---\---GAMES_PROGRAMMING2---\---LABS---\Lab6\CPPS,HEADERS\TransformComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\---UNI---\---SEMESTER1---\---GAMES_PROGRAMMING2---\---LABS---\Lab6\CPPS,HEADERS\Vertex.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Program Files (x86)\2013.3\include\fbxsdk.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\---UNI---\---SEMESTER1---\---GAMES_PROGRAMMING2---\---LABS---\Lab6\CPPS,HEADERS\Win32Window.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="fbxsdk.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -44,6 +140,9 @@
       <Filter>Effects</Filter>
     </None>
     <None Include="Transform.fx">
+      <Filter>Effects</Filter>
+    </None>
+    <None Include="Texture.fx">
       <Filter>Effects</Filter>
     </None>
   </ItemGroup>

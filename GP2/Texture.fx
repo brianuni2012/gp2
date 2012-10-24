@@ -2,16 +2,19 @@ float4x4 matWorld:WORLD;
 float4x4 matView:VIEW;
 float4x4 matProjection:PROJECTION;
 
+
 struct VS_INPUT
 {
 	float4 pos:POSITION;
 	float4 colour:COLOR;
+	float2 texCoord:TEXCOORD0;
 };
 
 struct PS_INPUT
 {
 	float4 pos:SV_POSITION;
 	float4 colour:COLOR;
+	float2 texCoord:TEXCOORD0;
 };
 
 PS_INPUT VS(VS_INPUT input)
@@ -20,15 +23,26 @@ PS_INPUT VS(VS_INPUT input)
 	float4x4 matViewProjection=mul(matView,matProjection);
 	float4x4 matWorldViewProjection=mul(matWorld,matViewProjection);
 	
+	output.pos=mul(input.pos,matWorldViewProjection);
 	output.colour=input.colour;
 	
-	output.pos=mul(input.pos,matWorldViewProjection);
+	output.texCoord = input.texCoord;
+	
 	return output;
 }
 
+Texture2D diffuseTexture;
+
+	SamplerState diffuseSampler
+	{
+	Filter = MIN_MAG_LINEAR_MIP_POINT;
+	AddressU = MIRROR;
+	AddressV = MIRROR;
+	};
+
 float4 PS(PS_INPUT input):SV_TARGET
 {
-	return input.colour;
+	return diffuseTexture.Sample(diffuseSampler,input.texCoord);
 	//float4 (1.0f,1.0f,1.0f,1.0f);
 }
 
